@@ -10,7 +10,7 @@ import { MapOperator } from 'rxjs/internal/operators/map';
 })
 export class SpotifyService {
 
-  private API_TOKEN = 'BQAAec2MOircOSWoY-KiyYtepw05tosJD4AtHSy3H40NJSVzazUktgpoSjxOyJg4JZFCYkF3RW99RXFqJls';
+  private API_TOKEN = 'BQAuKnydlKt6bzt-TB8JZyWRzrzQ7rttMbfTh8UX1ojvM2TP3zXgBr5hIFN6nGSFZJb_hpqeNA9uSNOM3YE';
   constructor(private http: HttpClient) { }
 
   getQuery(query: string) {
