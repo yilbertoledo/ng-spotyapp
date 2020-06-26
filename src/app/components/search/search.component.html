@@ -1,1 +1,10 @@
-<p>search works!</p>
+<div class="row">
+    <div class="col">
+        <input #txtSearch (keyup)="searchArtist(txtSearch.value);" type="text" class="form-control is-valid."
+            placeholder="Search artist" aria-label="Search artist" aria-describedby="button-addon2">
+    </div>
+</div>
+
+<div class="card-columns mt-5">
+    <app-card *ngFor="let artist of artists" [card]="artist"></app-card>
+</div>
