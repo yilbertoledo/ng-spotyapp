@@ -10,6 +10,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { SpotifyService } from './services/spotify.service';
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { CardComponent } from './components/card/card.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
+import { SecureDomPipe } from './pipes/secure-dom.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { CardComponent } from './components/card/card.component';
     ArtistComponent,
     NavbarComponent,
     NoimagePipe,
-    CardComponent
+    SecureDomPipe,
+    CardComponent,
+    LoadingComponent,
+    SecureDomPipe,
   ],
   imports: [
     BrowserModule,

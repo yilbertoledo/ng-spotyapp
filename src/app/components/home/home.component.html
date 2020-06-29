@@ -1,3 +1,5 @@
-<div class="card-columns">
+<app-loading *ngIf="loading" class="animated fadeIn"></app-loading>
+
+<div class="card-columns animated fadeIn" *ngIf="!loading">
     <app-card *ngFor="let release of newReleases" [card]="release"></app-card>
 </div>

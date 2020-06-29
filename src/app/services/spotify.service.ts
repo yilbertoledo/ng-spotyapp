@@ -2,15 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from "rxjs/operators";
-import { MapOperator } from 'rxjs/internal/operators/map';
-
 
 @Injectable({
   providedIn: 'root'
 })
 export class SpotifyService {
 
-  private API_TOKEN = 'BQAuKnydlKt6bzt-TB8JZyWRzrzQ7rttMbfTh8UX1ojvM2TP3zXgBr5hIFN6nGSFZJb_hpqeNA9uSNOM3YE';
+  private API_TOKEN = 'BQCV9CFNHytBL3KsjnOQEKmG8HsXegZ0-YjvU9w42GQSrOXGFkWm8B9uMQ7se-L1jfeFcZR-uhwa8rAnevo';
   constructor(private http: HttpClient) { }
 
   getQuery(query: string) {
@@ -25,8 +23,17 @@ export class SpotifyService {
       .pipe(map((data) => data["albums"].items));
   }
 
-  searchArtist(filter: string): Observable<any> {
+  searchArtists(filter: string): Observable<any> {
     return this.getQuery(`search?query=${filter}&type=artist&offset=0&limit=20`)
       .pipe(map((data) => data["artists"].items));
+  }
+
+  findArtist(artistId: string) {
+    return this.getQuery(`artists/${artistId}`);
+  }
+
+  getArtistTopTracks(artistId: string, country: string) {
+    return this.getQuery(`artists/${artistId}/top-tracks?country=${country}`)
+      .pipe(map((data) => data['tracks']));
   }
 }

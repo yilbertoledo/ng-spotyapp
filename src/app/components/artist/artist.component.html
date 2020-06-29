@@ -1,1 +1,46 @@
-<p>artist works!</p>
+<app-loading *ngIf="loading" class="animated fadeIn"></app-loading>
+
+<div *ngIf="artist && !loading" class="row animated fadeIn">
+    <div class="col-2">
+        <img [src]="artist.images | noimage" class="img-thumbnail img-circle">
+    </div>
+
+    <div class="col">
+        <h3>{{artist.name}}</h3>
+        <p>
+            <a [href]="artist.external_urls.spotify" target="_blank">
+                {{artist.name}}' page.
+            </a>
+        </p>
+    </div>
+
+    <div class="col-4 text-right">
+        <button class="btn btn-outline-danger" routerLink="/search"> Back </button>
+    </div>
+</div>
+
+<div *ngIf="topTracks && !loading" class="row m-5">
+    <div class="col">
+        <table class="table text-white">
+            <thead>
+                <th>Image</th>
+                <th>Album</th>
+                <th>Song</th>
+                <th>Preview</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let track of topTracks">
+                    <td class="middle-text"><img [src]="track.album.images | noimage" class="img-thumb"></td>
+                    <td class="middle-text">{{track.album.name}}</td>
+                    <td class="middle-text">{{track.name}}</td>
+                    <td class="middle-text">
+                        <iframe [src]=" track.id | secureDom: 'https://open.spotify.com/embed/track/'" width="250"
+                            height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                        <!-- <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="200"
+                            height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

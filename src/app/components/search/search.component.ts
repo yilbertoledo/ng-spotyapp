@@ -8,6 +8,7 @@ import { SpotifyService } from 'src/app/services/spotify.service';
 })
 export class SearchComponent implements OnInit {
 
+  loading = false;
   artists: any[] = [];
   constructor(private spotifySvc: SpotifyService) {
 
@@ -17,10 +18,18 @@ export class SearchComponent implements OnInit {
   }
 
   searchArtist(filter: string) {
-    console.log(filter);
-    this.spotifySvc.searchArtist(filter).subscribe((artists: any) => {
-      this.artists = artists;
-    });
+    this.loading = true;
+    if (filter.trim().length > 0) {
+      this.spotifySvc.searchArtists(filter).subscribe((artists: any) => {
+        this.artists = artists;
+        this.loading = false;
+      });
+    }
+    else {
+      this.artists = [];
+      this.loading = false;
+    }
+
   }
 
 }

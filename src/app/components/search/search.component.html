@@ -5,6 +5,8 @@
     </div>
 </div>
 
-<div class="card-columns mt-5">
+<app-loading *ngIf="loading" class=" animated fadeIn"></app-loading>
+
+<div class="card-columns mt-5 animated fadeIn" *ngIf="!loading">
     <app-card *ngFor="let artist of artists" [card]="artist"></app-card>
 </div>
